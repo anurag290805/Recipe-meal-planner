@@ -1,0 +1,25 @@
+[theme]
+
+# ── Base ─────────────────────────────────────────────────────────────────────
+base                     = "light"
+
+# ── Colors ───────────────────────────────────────────────────────────────────
+
+# Muted coral — warm, professional, not neon
+# Used for: buttons, checkboxes, sliders, links, active states
+primaryColor             = "#D94F3D"
+
+# Very light warm cream tint — reduces harsh brightness vs pure white
+# Used for: main app background
+backgroundColor          = "#FDF6F0"
+
+# Slightly deeper warm cream — helps cards and sidebars stand out
+# Used for: sidebar, containers, expanders, input backgrounds
+secondaryBackgroundColor = "#F5EBE0"
+
+# Deep charcoal navy — strong readability on warm light backgrounds
+# Used for: all body text, labels, headings
+textColor                = "#1E2235"
+
+# ── Font ─────────────────────────────────────────────────────────────────────
+font                     = "sans serif"
