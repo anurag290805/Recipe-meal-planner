@@ -6,23 +6,40 @@ A full-featured desktop web app for managing your personal recipe collection, pl
 
 ## 📸 Screenshots
 
-> Add screenshots of your app here after running it locally. Suggested shots:
-> - Home dashboard with metrics
-> - Recipe Library cards
-> - Weekly Meal Planner grid
-> - Grocery List with checkboxes
-> - What Can I Cook? results
+### 🏠 Home Dashboard
+![Home Dashboard](screenshots/home.png)
+*Live metrics, quick navigation, and recently added recipes at a glance.*
+
+### 📚 Recipe Library
+![Recipe Library](screenshots/recipes.png)
+*50 recipes displayed as clean cards with cuisine badges, tags, cook time, and expandable ingredient lists.*
+
+### ➕ Add / Edit Recipe
+![Add Recipe](screenshots/add_recipe.png)
+*Step-by-step form with a live preview panel, dynamic ingredient rows, and cooking instructions.*
+
+### 📅 Weekly Meal Planner
+![Meal Planner](screenshots/meal_planner.png)
+*Full week grid with Breakfast, Lunch, and Dinner slots. Today is highlighted. Saves with one click.*
+
+### 🛒 Grocery List
+![Grocery List](screenshots/grocery_list.png)
+*Auto-generated from your meal plan. Ingredients merged and totalled across recipes, grouped by category, checkable as you shop.*
+
+### 🤔 What Can I Cook?
+![What Can I Cook](screenshots/what_can_i_cook.png)
+*Enter ingredients you have — get instant full matches and ranked partial matches with missing ingredients shown clearly.*
 
 ---
 
 ## ✨ Features
 
-- **Recipe Library** — Add, edit, and delete recipes with title, description, cuisine, cook time, servings, tags, and full ingredient lists. Search and filter by cuisine or tag.
-- **Meal Planner** — A weekly calendar grid (Mon–Sun × Breakfast/Lunch/Dinner) to assign recipes to each meal slot. Navigate between weeks.
-- **Smart Grocery List** — Auto-generates a merged grocery list from your weekly meal plan. Duplicate ingredients across recipes are combined and totalled. Items are grouped by category and checkable as you shop.
-- **What Can I Cook?** — Enter ingredients you have at home and get instant recipe matches. Full matches shown first; partial matches ranked by percentage with missing ingredients listed clearly.
-- **49 Starter Recipes** — Pre-loaded dataset across Indian, Italian, Mexican, Chinese, Thai, Mediterranean, American, vegetarian, vegan, and more.
-- **Warm Coral UI** — Custom Streamlit theme with styled cards, dark action buttons, and a consistent sidebar across all pages.
+- **Recipe Library** — Add, edit, and delete recipes with title, description, cuisine, cook time, servings, tags, ingredients, and cooking instructions. Search and filter by cuisine or tag.
+- **Meal Planner** — A weekly calendar grid (Mon–Sun × Breakfast/Lunch/Dinner) to assign recipes to each meal slot. Navigate between weeks. Today's column is highlighted.
+- **Smart Grocery List** — Auto-generates a merged grocery list from your weekly meal plan. Duplicate ingredients across recipes are combined and totalled. Items grouped by category (Produce, Meat & Protein, Grains & Pantry, Dairy) and checkable as you shop.
+- **What Can I Cook?** — Enter ingredients you have at home and get instant recipe matches. Full matches shown first; partial matches ranked by percentage with missing ingredients shown as chips.
+- **50 Starter Recipes** — Pre-loaded dataset across Indian, Italian, Mexican, Chinese, Thai, Mediterranean, American, vegetarian, vegan, breakfast, snacks, and desserts.
+- **Warm Coral UI** — Custom Streamlit theme with styled cards, dark action buttons, cuisine badges, tag chips, and a consistent sidebar across all pages.
 
 ---
 
@@ -87,7 +104,7 @@ recipe-planner/
 ├── app.py                    # Home dashboard (entry point)
 ├── database.py               # All database logic (SQLite)
 ├── global_styles.py          # Shared CSS injected across pages
-├── seed_data.py              # Seeds 49 starter recipes
+├── seed_data.py              # Seeds 50 starter recipes
 │
 ├── pages/
 │   ├── add_recipe.py         # Add & edit recipes
@@ -104,24 +121,24 @@ recipe-planner/
 
 ## 🧠 Key Technical Highlights
 
-**Relational database design** — Three linked SQLite tables (`recipes`, `ingredients`, `meal_plan`) with foreign key constraints and cascade deletes.
+**Relational database design** — Three linked SQLite tables (`recipes`, `ingredients`, `meal_plan`) with foreign key constraints and cascade deletes. All database access is centralised in `database.py` — no page contains raw SQL.
 
-**Ingredient merging algorithm** — The grocery list aggregates ingredients across all planned recipes, combining duplicates and summing quantities in pure Python using dictionaries and string normalization.
+**Ingredient merging algorithm** — The grocery list aggregates ingredients across all planned recipes, combining duplicates and summing quantities in pure Python using dictionaries and string normalisation.
 
-**Ingredient matching logic** — The "What Can I Cook?" feature uses Python sets to compute full and partial matches against every recipe, ranked by match percentage.
+**Ingredient matching logic** — The "What Can I Cook?" feature uses Python sets to compute full and partial matches against every recipe, ranked by match percentage. Missing ingredients are highlighted clearly.
 
-**Dynamic form state** — The Add Recipe page uses `st.session_state` to manage a variable number of ingredient rows that persist across Streamlit reruns.
+**Dynamic form state** — The Add Recipe page uses `st.session_state` to manage a variable number of ingredient rows that persist across Streamlit reruns without resetting.
 
-**Multi-page architecture** — Streamlit's native `pages/` folder handles routing; all database access is centralized in `database.py` so no page contains raw SQL.
+**Multi-page architecture** — Streamlit's native `pages/` folder handles routing automatically. Shared styles are injected via `global_styles.py` so every page looks consistent.
 
 ---
 
 ## 📋 What I Learned
 
-- Structuring a Python project across multiple modules
-- Creating and querying a relational SQLite database with parameterized queries
+- Structuring a Python project across multiple modules with clean separation of concerns
+- Creating and querying a relational SQLite database with parameterised queries
 - Building interactive multi-page UIs with Streamlit (forms, session state, dynamic elements)
-- Writing data aggregation logic for real-world use cases
+- Writing data aggregation logic for real-world use cases (ingredient merging, set-based matching)
 - Using Git for version control and GitHub for project presentation
 
 ---
