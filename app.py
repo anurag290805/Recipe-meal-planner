@@ -1,4 +1,7 @@
-from global_styles import inject_global_styles
+import streamlit as st
+from seed_data import seed_recipes
+
+seed_recipes()from global_styles import inject_global_styles
 inject_global_styles()
 import streamlit as st
 from datetime import date, timedelta
