@@ -1,8 +1,9 @@
 import streamlit as st
-from database import init_db
+
+from database import create_tables
 from seed_data import seed_recipes
 
-init_db()
+create_tables()
 seed_recipes()
 from global_styles import inject_global_styles
 inject_global_styles()
